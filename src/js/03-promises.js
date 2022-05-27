@@ -45,3 +45,6 @@ const onFormSubmit = (event) => {
 }
 
 form.addEventListener('submit', onFormSubmit);
+
+const label = document.querySelectorAll("label");
+label.forEach((label) => (label.classList.add("form__label")));
