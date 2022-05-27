@@ -23,8 +23,8 @@ function createPromise(position, delay) {
 }
 
 const generatePromise = () => {
-  const { delay, step, amount } = elements;
-  let totalDelay = delay;
+  const { delay: firstDelay, step, amount } = elements;
+  let delay = firstDelay;
   for (let i = 1; i <= amount; i++) {
     createPromise(i, delay)
       .then(({ position, delay }) => {
@@ -33,7 +33,7 @@ const generatePromise = () => {
       .catch(({ position, delay }) => {
         Notiflix.Notify.failure(`❌ Rejected promise ${position} in ${delay}ms`);
       });
-    totalDelay += step;
+    delay += step;
   }
 }
 
